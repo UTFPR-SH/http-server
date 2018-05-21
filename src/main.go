@@ -1,42 +1,35 @@
+// Copyright 2018 Portal Direc's authors. All rights reserved.
+//
+// Authors: Rafael Campos Nunes <rafaelnunes@alunos.utfpr.edu.br>
+//          ...                 <email>
+//
+// Use of this source code is governed by a Apache License. The license can be
+// found (LICENSE) at the root of the project.
+
+// DOCUMENTATION
+// ---------------------------------------------------------------------------
+// The entry point to the entire system. It interprets flags and start the
+// server at a desired <port> value, here called of address, or if no port
+// value is assigned the default one is 8080.
+
 package main
 
 import (
-	"fmt"
-	"html/template"
-	"log"
-	"net/http"
+	"flag"
 )
 
-// TODO: Create a way to parse the port and ip flags
-// TODO: Separate code from here to a server file
+var (
+	addr string
+)
 
-func render(w http.ResponseWriter, tmpl string, p *Page) {
-
-	t, err := template.ParseFiles(tmpl)
-
-	if err != nil {
-		log.Fatal("Something went won't while trying to parse the page")
-	}
-
-	t.Execute(w, p)
-}
-
-func root(w http.ResponseWriter, r *http.Request) {
-	title := "./html/index.html"
-
-	page, err := Load(title)
-
-	if err != nil {
-		fmt.Printf("Could not load the page %s\n", title)
-	} else {
-		render(w, title, page)
-	}
+func init() {
+	flag.StringVar(&addr, "p", "8080", "Port address used to start the server")
 }
 
 func main() {
 
-	http.HandleFunc("/", root)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	flag.Parse()
 
-	fmt.Printf("Server running on %s:%s\n", "127.0.0.1", "8080")
+	//Init the server at port address
+	Init(addr)
 }
