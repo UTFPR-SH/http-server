@@ -1,9 +1,15 @@
 COMPILER=go
-MODE=build
+BUILD=build
+INSTALL=install
 SRC=main.go page.go server.go rest.go
+EXEC=direc-server
 
 all:
-	$(COMPILER) $(MODE) $(SRC)
+	$(COMPILER) $(BUILD) -o $(EXEC) $(SRC)
+
+install:
+	$(COMPILER) $(INSTALL) -o $(EXEC) $(SRC)
 
 clear:
-	rm main
+	rm $(EXEC)
+	rm $GOPATH/bin/$(EXEC)
