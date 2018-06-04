@@ -27,6 +27,8 @@ func Init(addr string) {
 	http.HandleFunc("/oportunities", HandleOportunities)
 	http.HandleFunc("/404", HandleNotFound)
 
+	log.Printf("Server running on 127.0.0.1:%s.\n", addr)
+
 	err := http.ListenAndServe(":"+addr, nil)
 
 	if err != nil {
