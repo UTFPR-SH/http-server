@@ -23,7 +23,7 @@ type Page struct {
 }
 
 var (
-	path string = "./html/"
+	path string = "./html/_site/"
 )
 
 /// Load a page and returns a pointer to it in case of success
