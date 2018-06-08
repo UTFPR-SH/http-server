@@ -20,7 +20,7 @@ go:
 	$(COMPILER) $(BUILD) -o $(EXEC) $(SRC)
 
 jekyll:
-	jekyll build -s ./html/ -d ./html/_site --incremental --watch
+	jekyll build -s ./html/ -d ./html/_site --incremental
 
 
 clear:
