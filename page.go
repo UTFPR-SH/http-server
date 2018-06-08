@@ -26,12 +26,11 @@ var (
 	path string = "./html/_site/"
 )
 
-/// Load a page and returns a pointer to it in case of success
+// Load a page and returns a pointer to it in case of success
 func Load(title string) (*Page, error) {
 
 	body, err := ioutil.ReadFile(Filepath(title))
 
-	// FIXME: Do a proper error handling over here (return 404?)
 	if err != nil {
 		log.Printf("Couldn't load file %s", title)
 		return nil, err
@@ -40,7 +39,7 @@ func Load(title string) (*Page, error) {
 	return &Page{Title: title, Body: body}, nil
 }
 
-/// Returns the file path of a given file name
+// Returns the file path of a given file name
 func Filepath(filename string) string {
 	return path + filename + ".html"
 }

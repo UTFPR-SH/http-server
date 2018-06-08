@@ -11,3 +11,7 @@ navigation:
   url: /derint
 - text: oportunidades
   url: /oportunities
+
+sass:
+  sass_dir: _sass
+  style: compressed

@@ -52,8 +52,6 @@ func HandleDepex(w http.ResponseWriter, r *http.Request) {
 
 	if err == nil {
 		render(w, Filepath(title), page)
-	} else {
-		http.Redirect(w, r, "/404", http.StatusFound)
 	}
 }
 
@@ -65,8 +63,6 @@ func HandleDepec(w http.ResponseWriter, r *http.Request) {
 
 	if err == nil {
 		render(w, Filepath(title), page)
-	} else {
-		http.Redirect(w, r, "/404", http.StatusFound)
 	}
 }
 
@@ -78,9 +74,8 @@ func HandleDepet(w http.ResponseWriter, r *http.Request) {
 
 	if err == nil {
 		render(w, Filepath(title), page)
-	} else {
-		http.Redirect(w, r, "/404", http.StatusFound)
 	}
+
 }
 
 func HandleOportunities(w http.ResponseWriter, r *http.Request) {
@@ -91,8 +86,6 @@ func HandleOportunities(w http.ResponseWriter, r *http.Request) {
 
 	if err == nil {
 		render(w, Filepath(title), page)
-	} else {
-		http.Redirect(w, r, "/404", http.StatusNotFound)
 	}
 }
 

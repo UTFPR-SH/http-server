@@ -15,9 +15,20 @@ package main
 import (
 	"log"
 	"net/http"
+	"time"
 )
 
+var server http.Server
+
 func Init(addr string) {
+
+	server = http.Server{
+		Addr:           addr,
+		Handler:        nil,
+		ReadTimeout:    10 * time.Second,
+		WriteTimeout:   10 * time.Second,
+		MaxHeaderBytes: 1 << 20,
+	}
 
 	// Set handlers entry
 	http.HandleFunc("/", HandleRoot)
@@ -27,11 +38,9 @@ func Init(addr string) {
 	http.HandleFunc("/oportunities", HandleOportunities)
 	http.HandleFunc("/404", HandleNotFound)
 
-	log.Printf("Server running on 127.0.0.1:%s.\n", addr)
-
-	err := http.ListenAndServe(":"+addr, nil)
+	err := server.ListenAndServe()
 
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("Something went wrong. Error: %", v ...interface{})
 	}
 }
