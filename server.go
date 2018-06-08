@@ -41,6 +41,6 @@ func Init(addr string) {
 	err := server.ListenAndServe()
 
 	if err != nil {
-		log.Printf("Something went wrong. Error: %", v ...interface{})
+		log.Printf("Something went wrong. Error: %s", err)
 	}
 }
