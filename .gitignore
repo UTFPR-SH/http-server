@@ -14,5 +14,5 @@
 # Build files
 direc-server
 html/_site/
-html/.jekyll_metadata
+html/.jekyll-metadata
 .sass-cache/

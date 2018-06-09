@@ -23,7 +23,7 @@ var server http.Server
 func Init(addr string) {
 
 	server = http.Server{
-		Addr:           addr,
+		Addr:           "127.0.0.1:"+addr,
 		Handler:        nil,
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
@@ -41,6 +41,6 @@ func Init(addr string) {
 	err := server.ListenAndServe()
 
 	if err != nil {
-		log.Printf("Something went wrong. Error: %", v ...interface{})
+		log.Printf("Error: %s", err)
 	}
 }

@@ -4,6 +4,10 @@ INSTALL=install
 SRC=main.go page.go server.go rest.go
 EXEC=direc-server
 
+ifeq ($(OS),Windows_NT)
+	EXEC=direc-server.exe
+endif
+
 all:
 	jekyll build -s ./html/ -d ./html/_site --incremental
 	$(COMPILER) $(BUILD) -o $(EXEC) $(SRC)
@@ -12,8 +16,11 @@ all:
 install:
 	$(COMPILER) $(INSTALL) -o $(EXEC) $(SRC)
 
+go:
+	$(COMPILER) $(BUILD) -o $(EXEC) $(SRC)
+
 jekyll:
-	jekyll build -s ./html/ -d ./html/_site --incremental --watch
+	jekyll build -s ./html/ -d ./html/_site --incremental
 
 
 clear:
