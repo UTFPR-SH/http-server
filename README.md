@@ -7,7 +7,7 @@ Sistema de integração de setores da _DIREC_ e oportunidades da região.
 Será necessário, para a compilação, o seguintes requisitos:
 
 - Compilador da linguagem de programação [Go](http://golang.org/)
-- [Jekyll](https://jekyllrb.com/)
+- Motor de páginas estático [Jekyll](https://jekyllrb.com/)
 - Programa *make* para executar o script de construção do programa
 
 Após ter os requisitos necessários basta escrever, no terminal,  `make` na raiz
