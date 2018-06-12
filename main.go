@@ -19,11 +19,13 @@ import (
 )
 
 var (
-	addr string
+	addr  string
+	debug bool
 )
 
 func init() {
-	flag.StringVar(&addr, "p", "8080", "Port address used to start the server")
+	flag.StringVar(&addr, "p", "8080", "Set port address used to start the server")
+	flag.BoolVar(&debug, "d", false, "Set if the server is in debug mode")
 }
 
 func main() {
