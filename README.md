@@ -20,6 +20,7 @@ construído, em seguinte basta executá-lo para iniciar o servidor.
 Os parâmetros disponíveis estão listados na tabela abaixo.
 
 
-| Parâmetro | Descrição                             | Uso                        |
-| --------- | ------------------------------------- | -------------------------- |
-| --port    | Modifica a porta de uso pelo servidor | `direc-server --port 9954` |
+| Parâmetro | Descrição                                        | Uso                        |
+| --------- | -------------------------------------            | -------------------------- |
+| --port    | Modifica a porta de uso pelo servidor            | `direc-server --port 9954` |
+| -d        | Define que o servidor executará em modo de debug | `direc-server -d`                           |
