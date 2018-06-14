@@ -8,7 +8,7 @@
 
 // DOCUMENTATION
 // ---------------------------------------------------------------------------
-// This file concerns the definition of the REST API used by the server as
+// This file concerns the definition of requests used by the server as
 // also the render to the client.
 
 package main
