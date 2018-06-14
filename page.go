@@ -15,6 +15,7 @@ package main
 import (
 	"io/ioutil"
 	"log"
+	"strings"
 )
 
 type Page struct {
@@ -23,7 +24,7 @@ type Page struct {
 }
 
 var (
-	path string = "./html/_site/"
+	html string = "./html/_site/"
 )
 
 // Load a page and returns a pointer to it in case of success
@@ -32,14 +33,23 @@ func Load(title string) (*Page, error) {
 	body, err := ioutil.ReadFile(Filepath(title))
 
 	if err != nil {
-		log.Printf("Couldn't load file %s", title)
+		log.Printf("Error %v", err.Error())
 		return nil, err
 	}
 
 	return &Page{Title: title, Body: body}, nil
 }
 
-// Returns the file path of a given file name
+// Returns the file path of a given html file name
 func Filepath(filename string) string {
-	return path + filename + ".html"
+
+	split := strings.Split(filename, ".")
+
+	// The file isn't an HTML and probably is an asset
+	if len(split) > 1 {
+		log.Printf("Asset to load %s", filename)
+		return html + filename[1:]
+	}
+
+	return html + filename + ".html"
 }

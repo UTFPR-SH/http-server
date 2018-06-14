@@ -14,33 +14,75 @@ package main
 
 import (
 	"log"
+	"mime"
 	"net/http"
+	"strings"
 	"time"
 )
 
-var server http.Server
+var (
+	server http.Server
+	pages  map[string]func(http.ResponseWriter, *http.Request)
+)
+
+type PortalDirecHandler struct{}
 
 func Init(addr string) {
 
 	server = http.Server{
-		Addr:           "127.0.0.1:"+addr,
-		Handler:        nil,
+		Addr:           "127.0.0.1:" + addr,
+		Handler:        &PortalDirecHandler{},
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	// Set handlers entry
-	http.HandleFunc("/", HandleRoot)
-	http.HandleFunc("/depec", HandleDepec)
-	http.HandleFunc("/depex", HandleDepex)
-	http.HandleFunc("/depet", HandleDepet)
-	http.HandleFunc("/oportunities", HandleOportunities)
-	http.HandleFunc("/404", HandleNotFound)
+	pages = make(map[string]func(http.ResponseWriter, *http.Request))
+
+	pages["/"] = HandleRoot
+	pages["/depec"] = HandleDepec
+	pages["/depex"] = HandleDepex
+	pages["/depet"] = HandleDepet
+	// TODO: Implement a derint handler on rest.go
+	//pages["/derint"] = HandleDerint
+	pages["/oportunities"] = HandleOportunities
 
 	err := server.ListenAndServe()
 
 	if err != nil {
 		log.Printf("Error: %s", err)
+	}
+}
+
+func (*PortalDirecHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+
+	if h, ok := pages[r.URL.String()]; ok {
+		h(w, r)
+		return
+	} else {
+		// Verify the MIME type of the requested file
+		filepath := strings.Split(r.URL.String(), "/")
+		filename := ""
+
+		var mimeType string
+
+		if len(filepath) > 2 {
+			filename = filepath[len(filepath)-1]
+			extension := strings.Split(filename, ".")
+
+			mimeType = mime.TypeByExtension("." + extension[len(extension)-1])
+		}
+
+		if debug {
+			log.Printf("Requested file %s. MIME type: %s\n", filename, mimeType)
+		}
+
+		// Loads the file and send it back with the correct MIME type
+		file, err := Load(r.URL.String())
+
+		if err == nil {
+			w.Header().Add("Content-Type", mimeType)
+			w.Write(file.Body)
+		}
 	}
 }
