@@ -15,8 +15,23 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 )
+
+func handlePage(title string, w http.ResponseWriter, r *http.Request) {
+
+	page, err := Load(title)
+
+	if err == nil {
+		render(w, Filepath(title), page)
+	} else {
+		if debug {
+			log.Printf("The page \"%s\" couldn't be loaded. Reason: %v",
+				Filepath(title), err)
+		}
+	}
+}
 
 func render(w http.ResponseWriter, tmpl string, p *Page) {
 
@@ -34,68 +49,25 @@ func render(w http.ResponseWriter, tmpl string, p *Page) {
 }
 
 func HandleRoot(w http.ResponseWriter, r *http.Request) {
-
-	title := "index"
-
-	page, err := Load(title)
-
-	if err == nil {
-		render(w, Filepath(title), page)
-	}
+	handlePage("index", w, r)
 }
 
 func HandleDepex(w http.ResponseWriter, r *http.Request) {
-
-	title := "depex"
-
-	page, err := Load(title)
-
-	if err == nil {
-		render(w, Filepath(title), page)
-	}
+	handlePage("depex", w, r)
 }
 
 func HandleDepec(w http.ResponseWriter, r *http.Request) {
-
-	title := "depec"
-
-	page, err := Load(title)
-
-	if err == nil {
-		render(w, Filepath(title), page)
-	}
+	handlePage("depec", w, r)
 }
 
 func HandleDepet(w http.ResponseWriter, r *http.Request) {
-
-	title := "depet"
-
-	page, err := Load(title)
-
-	if err == nil {
-		render(w, Filepath(title), page)
-	}
-
+	handlePage("depet", w, r)
 }
 
 func HandleOportunities(w http.ResponseWriter, r *http.Request) {
-
-	title := "oportunities"
-
-	page, err := Load(title)
-
-	if err == nil {
-		render(w, Filepath(title), page)
-	}
+	handlePage("oportunities", w, r)
 }
 
 func HandleNotFound(w http.ResponseWriter, r *http.Request) {
-
-	title := "404"
-
-	page, err := Load(title)
-
-	if err == nil {
-		render(w, Filepath(title), page)
-	}
+	handlePage("404", w, r)
 }
