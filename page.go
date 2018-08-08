@@ -24,7 +24,7 @@ type Page struct {
 }
 
 var (
-	html string = "./html/_site/"
+	root string = "./html/_site/"
 )
 
 // Load a page and returns a pointer to it in case of success
@@ -48,8 +48,8 @@ func Filepath(filename string) string {
 	// The file isn't an HTML and probably is an asset
 	if len(split) > 1 {
 		log.Printf("Asset to load %s", filename)
-		return html + filename[1:]
+		return root + filename[1:]
 	}
 
-	return html + filename + ".html"
+	return root + filename + ".html"
 }
