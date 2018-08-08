@@ -40,11 +40,10 @@ func Init(addr string) {
 	pages = make(map[string]func(http.ResponseWriter, *http.Request))
 
 	pages["/"] = HandleRoot
+	pages["/index"] = HandleRoot
 	pages["/depec"] = HandleDepec
 	pages["/depex"] = HandleDepex
 	pages["/depet"] = HandleDepet
-	// TODO: Implement a derint handler on rest.go
-	//pages["/derint"] = HandleDerint
 	pages["/oportunities"] = HandleOportunities
 
 	err := server.ListenAndServe()
@@ -58,7 +57,6 @@ func (*PortalDirecHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	if h, ok := pages[r.URL.String()]; ok {
 		h(w, r)
-		return
 	} else {
 		// Verify the MIME type of the requested file
 		filepath := strings.Split(r.URL.String(), "/")
