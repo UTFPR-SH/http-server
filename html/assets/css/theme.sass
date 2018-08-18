@@ -1,12 +1,81 @@
 ---
 ---
 
+// Include colors
+@import "colors"
 
-.section 
-    min-height: calc(100vh-32vh) !important
+// For the sticky footer on the bottom
+section 
+    min-height: calc(100vh-7vh) !important
 
-.footer
-    height: 32vh
+footer#site-footer
+    background: yellow !important
+    margin-top: 30px
+    height: 10vh
+
+.navbar
+    margin-bottom: 20px
+
+.navbar-item 
+    font-size: 20px
+    text-transform: uppercase
+    border-radius: 0 !important
+    border-bottom: 3px solid transparent
+
+    -webkit-transition: all .1s ease-in
+    -moz-transition: all .1s ease-in
+    -o-transition: all .1s ease-in
+
+.navbar-item:hover
+    background: transparent !important
+    border-bottom: 3px solid yellow
+
+// Elements of the theme
+
+p, ul
+    font-family: 'Open Sans', sans-serif
+    font-size: 17px
+    
+p.text
+    text-indent: 50px
+    margin-bottom: 2px
+    text-align: justify
+
+.title-small 
+    font-size: 15px
+    color: rgb(51, 51, 51)
+    margin-bottom: 3px
+    margin-top: 3px
+
+.title-medium
+    font-size: 20px
+    color: rgb(51, 51, 51)
+    margin-bottom: 5px
+    margin-top: 5px
+
+.title-large
+    font-size: 35px
+    color: rgb(51, 51, 51)
+    margin-bottom: 5px
+    margin-top: 5px
+
+.title 
+    font-size: 25px
+    color: rgb(51, 51, 51)
+    margin-bottom: 3px
+    margin-top: 3px
+
+.gap-small-top
+    margin-top: 10px
+
+.gap-small-bottom
+    margin-bottom: 10px
+
+.gap-medium-top
+    margin-top: 30px
+
+.is-link 
+    cursor: pointer
 
 // including bulma
 @import "bulma"
