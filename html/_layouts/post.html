@@ -1,0 +1,53 @@
+---
+layout: default
+title: {{ page.title }}
+---
+
+<link rel="stylesheet" type="text/css" href="/assets/css/post.css">
+
+<section class="section container is-primary post-content">
+  <header id="header" class="post-header">
+    <div class="columns">
+      <div class="column">
+        <figure class="image is-96x96 has-text-centered">
+          <img src="{{ page.picture }}" alt="Foto do professor" class="post-figure">  
+        </figure>
+      </div>
+      <div class="column is-11" style="margin-top:auto;margin-bottom:auto;">
+        <p class="post-author" title="Professor coordenador">{{ page.professor }}</p><small style="color: #dddddd">Professor coordenador</small><br><br>
+        <a href="mailto:{{ page.email }}" title="" class="button is-info"><i class="fas fa-envelope fa-fw"></i>   Email</a>
+        <a href="{{ page.lattes }}" title="" class="button is-info"><i class="fas fa-address-card fa-fw"></i> Lattes</a>
+      </div>  
+    </div>
+    
+  </header>
+
+  <p class="title-large gap-medium-top">{{ page.title }}</p>
+
+  <div class="post-text">
+    {{ content }}
+
+
+    <div class=""> <!-- Fotos do projeto -->
+      <p class="title-large">Fotos do projeto</p>
+
+      {% if page.fotos %}
+        <div>
+          
+        </div>
+      {% else %}
+        <div class="has-text-centered has-text-danger title-medium">
+          Nenhuma foto disponível
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="post-actions gap-small-top is-pulled-right">
+    {% assign status = page.status | downcase %}
+    {% if status == "em andamento" %}
+      <!-- Link ou enviar email? -->
+      <a href="{{ page.link }}" title="" class="button is-success is-outlined">PARTICIPAR DO PROJETO</a>
+    {% endif %}
+  </div>
+</section>
