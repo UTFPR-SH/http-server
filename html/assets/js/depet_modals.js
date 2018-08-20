@@ -1,7 +1,7 @@
 'use strict'
 
 // Array of modals available
-var M = ['modal-bolsista', 'modal-voluntario']
+var M = ['modal-nit', 'modal-proem', 'modal-consultorias']
 
 M.map((m) => {
 	document.getElementById(m).onclick = event => {
@@ -12,9 +12,9 @@ M.map((m) => {
 var dbutton = document.getElementsByClassName('delete')
 
 for (var i = 0; i < dbutton.length; i++) {
-    dbutton[i].onclick = event => {
-        M.forEach((e) => {
-            document.getElementById('m' + e).classList.remove('is-active')
-        })
-    }
+	dbutton[i].onclick = event => {
+		M.forEach((e) => {
+			document.getElementById('m' + e).classList.remove('is-active')
+		})
+	}
 }
