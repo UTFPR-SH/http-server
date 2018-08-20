@@ -14,8 +14,17 @@ title: {{ page.title }}
         </figure>
       </div>
       <div class="column is-11" style="margin-top:auto;margin-bottom:auto;">
-        <p class="post-author" title="Professor coordenador">{{ page.professor }}</p><small style="color: #dddddd">Professor coordenador</small><br><br>
-        <a href="mailto:{{ page.email }}" title="" class="button is-info"><i class="fas fa-envelope fa-fw"></i>   Email</a>
+        <p class="post-author" title="Professor coordenador">{{ page.professor }}</p>
+        <div class="is-pulled-right field is-grouped">
+          <div class="control">
+            <div class="tags has-addons">
+              <p class="tag is-dark">Início {{ page.data-inicio }}</p> 
+              <p class="tag is-danger">Fim {{ page.data-fim }}</p>
+            </div>
+          </div>
+        </div>
+        <small style="color: #dddddd">Professor coordenador</small><br><br>
+        <a href="mailto:{{ page.email }}" title="" class="button is-info"><i class="fas fa-envelope fa-fw"></i> Email</a>
         <a href="{{ page.lattes }}" title="" class="button is-info"><i class="fas fa-address-card fa-fw"></i> Lattes</a>
       </div>  
     </div>
@@ -32,13 +41,13 @@ title: {{ page.title }}
       <p class="title-large">Fotos do projeto</p>
 
       {% if page.fotos %}
-        <div>
-          
-        </div>
+      <div>
+
+      </div>
       {% else %}
-        <div class="has-text-centered has-text-danger title-medium">
-          Nenhuma foto disponível
-        </div>
+      <div class="has-text-centered has-text-danger title-medium">
+        Nenhuma foto disponível
+      </div>
       {% endif %}
     </div>
   </div>
@@ -46,8 +55,8 @@ title: {{ page.title }}
   <div class="post-actions gap-small-top is-pulled-right">
     {% assign status = page.status | downcase %}
     {% if status == "em andamento" %}
-      <!-- Link ou enviar email? -->
-      <a href="{{ page.link }}" title="" class="button is-success is-outlined">PARTICIPAR DO PROJETO</a>
+    <!-- Link ou enviar email? -->
+    <a href="{{ page.link }}" title="" class="button is-success is-outlined">PARTICIPAR DO PROJETO</a>
     {% endif %}
   </div>
 </section>
