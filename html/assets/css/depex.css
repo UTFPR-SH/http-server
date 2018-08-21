@@ -1,0 +1,29 @@
+ .depex-posts {
+ 	padding: 10px;
+ 	background: rgb(230, 230, 190);
+ 	border-radius: 3px;
+ }
+
+ .depex-posts .navbar {
+ 	background: transparent !important;
+ }
+
+ .depex-posts li {
+ 	margin-top: 15px;
+ 	border-radius: 2px;
+ 	border-bottom: 2px solid rgba(20, 20, 20, .2);
+ }
+
+ .depex-posts li:last-child {
+ 	border-bottom: 0;
+ }
+
+ #post-resume {
+ 	text-indent: 25px;
+ }
+
+ #post-picture {
+ 	border-radius: 3px;
+ 	border: 3px solid rgba(100, 100, 100, .2);
+ }
+
