@@ -1,7 +1,7 @@
 'use strict'
 
 // Array of modals available
-var M = ['modal-nit', 'modal-proem', 'modal-consultorias']
+let M = ['modal-nit', 'modal-proem', 'modal-consultorias']
 
 M.map((m) => {
 	document.getElementById(m).onclick = event => {

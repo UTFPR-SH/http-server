@@ -1,7 +1,7 @@
 'use strict'
 
 // Array of modals available
-var M = ['modal-bolsista', 'modal-voluntario']
+let M = ['modal-bolsista', 'modal-voluntario', 'modal-extensao']
 
 M.map((m) => {
 	document.getElementById(m).onclick = event => {
