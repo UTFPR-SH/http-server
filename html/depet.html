@@ -3,7 +3,9 @@ layout: default
 title: DEPET
 ---
 
+<script src="/assets/js/depet_modals.js" type="text/javascript" charset="utf-8" async defer></script>
 
+{% include depet_modals.html %}
 
 <div class="columns">
   <div class="column">
@@ -26,7 +28,7 @@ title: DEPET
   <div class="tile is-vertical">
     <div class="tile">
       <div class="tile is-parent">
-        <div id="nit" class="tile is-child notification is-success is-link">
+        <div id="modal-nit" class="tile is-child notification is-success is-link">
           <div class="content">
             <p class="title">NIT</p>  
             <p>Núcleo de Inovações Tecnológicas</p>
@@ -34,7 +36,7 @@ title: DEPET
         </div>  
       </div>
       <div class="tile is-parent">
-        <div id="nit" class="tile is-child notification is-info is-link">
+        <div id="modal-proem" class="tile is-child notification is-info is-link">
           <div class="content">
             <p class="title">PROEM</p>  
             <p>Programa de Empreendedorismo</p>
@@ -43,11 +45,12 @@ title: DEPET
       </div>
     </div>
     <div class="tile is-parent">
-     <div id="nit" class="tile is-child notification is-info is-link">
-      <div class="content">
-        <p class="title">Consultorias e Projetos Tecnológicos</p>  
-      </div>  
+      <div id="modal-consultorias" class="tile is-child notification is-info is-link">
+        <div class="content">
+          <p class="title">Consultorias e Projetos Tecnológicos</p>  
+          <p>Conte conosco para sua parceria em consultorias ou inovação tecnológica</p>
+        </div>  
+      </div>
     </div>
   </div>
-</div>
 </div>  
