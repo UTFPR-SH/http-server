@@ -45,18 +45,33 @@ title: {{ page.title }}
 
       </div>
       {% else %}
-      <div class="has-text-centered has-text-danger title-medium">
+      <div class="has-text-centered has-text-danger title-medium" style="padding: 10%;background: rgba(180, 50, 20, .2); border-radius: 2px; border: 1px solid rgba(255, 50, 20, .8);">
         Nenhuma foto disponível
       </div>
       {% endif %}
     </div>
   </div>
 
-  <div class="post-actions gap-small-top is-pulled-right">
+  <div class="post-actions gap-small-top">
     {% assign status = page.status | downcase %}
     {% if status == "em andamento" %}
-    <!-- Link ou enviar email? -->
-    <a href="{{ page.link }}" title="" class="button is-success is-outlined">PARTICIPAR DO PROJETO</a>
+    <p class="title-large">Quer ser voluntário no projeto?</p>
+    <p class="text">Para ser voluntário no projeto basta ser aluno da UTFPR e ter interesse neste projeto. Escreva uma mensagem como indicada no campo da mensagem, esponha seu <u>nome</u>, <u>graduação</u>, <u>interesse no projeto</u> e, por fim, clique no botão de <strong>participar do projeto</strong> que o encaminhará para o envio do email.</p> 
+
+    <form action="mailto:{{ page.email }}?subject=" class="gap-small-top">
+      <div class="field">
+        <label class="label">Mensagem ao coordenador</label>
+        <div class="control">
+          <textarea class="input" name="body" placeholder="Olá, meu nome é Rafael Campos Nunes e sou discente de Ciência da Computação. O projeto destacado no título é do meu interesse, aguardo retorno para mais informações.
+
+Grato." style="height: 110px !important;min-height: 40px;"></textarea>
+        </div>
+      </div>
+      <input type="text" name="subject" value="Interesse no projeto {{ page.title }}" hidden>
+      <div class="control is-pulled-right">
+        <input type="submit" value="PARTICIPAR DO PROJETO" class="button is-success is-outlined">
+      </div>
+    </form>
     {% endif %}
   </div>
 </section>
