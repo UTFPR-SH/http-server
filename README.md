@@ -22,5 +22,5 @@ Os parâmetros disponíveis estão listados na tabela abaixo.
 
 | Parâmetro | Descrição                                        | Uso                        |
 | --------- | -------------------------------------            | -------------------------- |
-| --port    | Modifica a porta de uso pelo servidor            | `direc-server -p 9954` |
-| -d        | Define que o servidor executará em modo de debug | `direc-server -d`                           |
+| --port    | Modifica a porta de uso pelo servidor            | `direc-server -p 9954`     |
+| -d        | Define que o servidor executará em modo de debug | `direc-server -d`          |
