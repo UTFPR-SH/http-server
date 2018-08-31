@@ -3,12 +3,7 @@ layout: default
 title: DEPEX
 ---
 
-<style type="text/css">
-
-ul.depex-posts > li {
-  margin-top: 15px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/depex.css">
 
 <script src="/assets/js/depex_modals.js" type="text/javascript" charset="utf-8" async defer></script>
 
@@ -16,24 +11,39 @@ ul.depex-posts > li {
 
 <div class="columns">
   <div class="column">
-    <p class="title-large">DEPEX - Departamento de Extensão</p>
+    <p class="title-large" id="title-computer">DEPEX - Departamento de Extensão</p>
+    <div id="title-mobile" class="has-text-centered">
+      <p class="title-large">DEPEX</p>
+    </div>
 
     <div class="tile is-ancestor">
-      <div class="tile is-parent">
-        <div id="modal-voluntario" class="tile is-child notification is-success is-link">
-          <div class="content">
-            <p class="title">Aluno voluntário</p>  
-            <p>Instruções para alunos que desejam ser voluntários em projetos</p>
-          </div>  
-        </div>          
-      </div>
-      <div class="tile is-parent">
-        <div id="modal-bolsista" class="tile is-child notification is-info is-link">
-          <div class="content">
-            <p class="title">Aluno bolsista</p>  
-            <p>Instruções para alunos que desejam ser bolsistas em projetos</p>
-          </div>  
-        </div>  
+      <div class="tile is-vertical">
+        <div class="tile">
+          <div class="tile is-parent">
+            <div id="modal-voluntario" class="tile is-child notification is-success is-link">
+              <div class="content">
+                <p class="title">Aluno voluntário</p>
+                <p>Instruções para alunos que desejam ser voluntários em projetos.</p>
+              </div>
+            </div>
+          </div>
+          <div class="tile is-parent">
+            <div id="modal-bolsista" class="tile is-child notification is-info is-link">
+              <div class="content">
+                <p class="title">Aluno bolsista</p>
+                <p>Instruções para alunos que desejam ser bolsistas em projetos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <div id="modal-extensao" class="tile is-child notification is-danger is-link">
+            <div class="content">
+              <p class="title">Sociedade, fale conosco!</p>
+              <p>Demandas e ofertas de ações de extensão para sociedade.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -66,47 +76,60 @@ ul.depex-posts > li {
       </ul>
     </div>
 
+    
+
     <div class="columns">
-      <div class="column">
-        <p class="title-large">Projetos de Extensão</p>
-
-
-        <ul class="depex-posts">
-          {% for element in site.posts %}
-          <li>
-            <div class="box">
-              <article class="media">
-                <div class="media-left">
-                  <figure class="image is-96x96">
-                    <img src="{{ element.picture }}" alt="Foto do professor">
-                  </figure>    
-                </div>
-                <div class="media-content">
-                  <div class="content">
-                    <p>
-                      <strong id="post-title">{{ element.title }}</strong>
-                      {% if element.status == 'Concluído' %}
-                      <span class="tag is-success is-pulled-right is-rounded">Projeto {{ element.status }}</span>
-                      {% else %}
-                      <span class="tag is-info is-pulled-right is-rounded">Projeto {{ element.status }}</span>
-                      {% endif %}
-                      <br>
-                      <p class="has-text-justified">{{ element.snippet }}</p>
-                    </p>
+      <div class="column depex-posts">
+        <div class="depex-posts-header">
+          <p class="title-large has-border-bottom">Projetos de Extensão</p>
+        </div>
+        <div class="depex-posts-content">
+          <ul style="height: 700px;" data-simplebar data-simplebar-auto-hide="false">
+            {% for element in site.posts %}
+            <li>
+              <div class="">
+                <article class="media" style="padding: 15px;">
+                  <div class="media-left">
+                    <figure class="image is-96x96">
+                      <img src="{{ element.picture }}" alt="Foto do professor" id="post-picture">
+                    </figure>
                   </div>
-                  <nav class="navbar is-mobile">
-                    <div class="level-right">
-                      <a href="{{ element.url }}" title="{{ element.title }}" class="button is-info">
-                        VISUALIZAR PROJETO
-                      </a>
+                  <div class="media-content">
+                    <div class="content">
+                      <div class="columns">
+                        <div class="column">
+                          <strong id="post-title">{{ element.title }}</strong>
+                        </div>
+                        <div class="column">
+                          {% if element.status == 'Concluído' %}
+                          <span class="tag is-success is-pulled-right is-rounded" id="post-tag">Projeto {{ element.status }}</span>
+                          {% else %}
+                          <div class="is-pulled-right field is-grouped" title="Vigente até">
+                            <div class="tags has-addons" id="post-tag">
+                              <span class="tag is-info is-rounded">Projeto {{ element.status }}</span>
+                              <span class="tag is-dark is-rounded">{{element.data-inicio}} - {{ element.data-fim }}</span>
+                            </div>
+                          </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <span class="has-text-grey" id="post-resume-title">Resumo do projeto</span>
+                      <p class="has-text-justified" id="post-resume">{{ element.snippet }}</p>
                     </div>
-                  </nav>
-                </div>
-              </article>
-            </div>
-          </li>
-          {% endfor %}
-        </ul>
+                    <nav class="navbar is-mobile">
+                      <div class="level-right">
+                        <a href="{{ element.url }}" title="{{ element.title }}" class="button is-info">
+                          VISUALIZAR PROJETO
+                        </a>
+                      </div>
+                    </nav>
+                  </div>
+                </article>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
       </div>
       <!-- <div class="column">
         <p class="title-medium">Filtros</p><br>
