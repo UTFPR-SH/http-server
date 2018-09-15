@@ -12,7 +12,5 @@
 *.out
 
 # Build files
-direc-server
-html/_site/
-html/.jekyll-metadata
-.sass-cache/
+server
+
