@@ -27,10 +27,16 @@ var (
 
 type PortalDirecHandler struct{}
 
-func Init(addr string) {
+func Init(port string) {
+
+	addr := "127.0.0.1"
+
+	if deploy {
+		addr = "0.0.0.0"
+	}	
 
 	server = http.Server{
-		Addr:           "127.0.0.1:" + addr,
+		Addr:           addr + ":" + port,
 		Handler:        &PortalDirecHandler{},
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
@@ -39,6 +45,7 @@ func Init(addr string) {
 
 	pages = make(map[string]func(http.ResponseWriter, *http.Request))
 
+	// TODO: This will have to be configured by a conf file
 	pages["/"] = HandleRoot
 	pages["/index"] = HandleRoot
 	pages["/depec"] = HandleDepec

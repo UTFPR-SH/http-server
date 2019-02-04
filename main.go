@@ -22,12 +22,14 @@ var (
 	addr  string
 	html  string
 	debug bool
+	deploy bool
 )
 
 func init() {
 	flag.StringVar(&addr, "p", "8080", "Set port address used to start the server")
 	flag.StringVar(&html, "html", "./html/_site", "Set the default directory for Jekyll output files")
 	flag.BoolVar(&debug, "d", false, "Set if the server is in debug mode")
+	flag.BoolVar(&deploy, "deploy", false, "Deploy the server over the network")
 }
 
 func main() {
