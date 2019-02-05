@@ -19,9 +19,9 @@ import (
 )
 
 var (
-	addr  string
-	html  string
-	debug bool
+	addr   string
+	html   string
+	debug  bool
 	deploy bool
 )
 
@@ -33,7 +33,6 @@ func init() {
 }
 
 func main() {
-
 	flag.Parse()
 
 	//Init the server at port address

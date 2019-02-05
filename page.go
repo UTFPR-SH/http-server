@@ -27,7 +27,7 @@ var (
 	root string = "./html/_site/"
 )
 
-// Load a page and returns a pointer to it in case of success
+// Load a file and returns a pointer to it in case of success
 func Load(title string) (*Page, error) {
 
 	body, err := ioutil.ReadFile(Filepath(title))
@@ -40,12 +40,13 @@ func Load(title string) (*Page, error) {
 	return &Page{Title: title, Body: body}, nil
 }
 
-// Returns the file path of a given html file name
+// Returns the file path of a given file name, asset or html.
 func Filepath(filename string) string {
 
 	split := strings.Split(filename, ".")
 
-	// The file isn't an HTML and probably is an asset
+	// The file isn't an HTML and probably is an asset because of the way that
+	// HTML files are loaded, they are requested without its file extension.
 	if len(split) > 1 {
 		log.Printf("Asset to load %s", filename)
 		return root + filename[1:]
